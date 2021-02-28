@@ -1,0 +1,382 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CHIP2019任务二赛后总结 | 417's blog</title><meta name="description" content="十月份做的比赛的总结~"><meta name="keywords" content="语义相似度,问答,生物医学"><meta name="author" content="lsc417"><meta name="copyright" content="lsc417"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://shuaichili.github.io/2019/11/08/chip2019task2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="CHIP2019任务二赛后总结"><meta property="og:url" content="http://shuaichili.github.io/2019/11/08/chip2019task2/"><meta property="og:site_name" content="417's blog"><meta property="og:description" content="十月份做的比赛的总结~"><meta property="og:image" content="https://s1.ax1x.com/2020/04/01/G8rq8H.png"><meta property="article:published_time" content="2019-11-08T13:36:26.000Z"><meta property="article:modified_time" content="2020-10-06T14:42:13.000Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?be15d2ecbbfbfbb775f48ef43cdb0d40";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.1.1',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime: '天',
+  date_suffix: {"one_hour":"刚刚","hours":"小时前","day":"天前"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: {"bookmark":{"message_prev":"按","message_next":"键将本页加入书签"},"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-06 22:42:13'
+}</script><noscript><style type="text/css">
+#nav {
+  opacity: 1
+}
+.justified-gallery img {
+  opacity: 1
+}
+</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = 'false'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.1.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">29</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">44</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-book"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/reward/"><i class="fa-fw fa fa-heart"></i><span> 打赏</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text"> 任务简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text"> 数据预处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%BC%BA"><span class="toc-number">3.</span> <span class="toc-text"> 数据增强</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6"><span class="toc-number">4.</span> <span class="toc-text"> 整体框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text"> 特征工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%AF%8D%E5%90%91%E9%87%8F%E8%AE%AD%E7%BB%83"><span class="toc-number">4.2.</span> <span class="toc-text"> 字词向量训练</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.3.</span> <span class="toc-text"> 预训练模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%9B%86%E6%88%90"><span class="toc-number">4.4.</span> <span class="toc-text"> 模型集成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">5.</span> <span class="toc-text"> 实验</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">6.</span> <span class="toc-text"> 写在最后</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://s1.ax1x.com/2020/04/01/G8rq8H.png)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">417's blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-address-book"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/reward/"><i class="fa-fw fa fa-heart"></i><span> 打赏</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">CHIP2019任务二赛后总结</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-11-08T13:36:26.000Z" title="发表于 2019-11-08 21:36:26">2019-11-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-06T14:42:13.000Z" title="更新于 2020-10-06 22:42:13">2020-10-06</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%84%E6%B5%8B%E6%80%BB%E7%BB%93/">评测总结</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="任务简介"><a class="markdownIt-Anchor" href="#任务简介"></a> 任务简介</h1>
+<p>任务名称： <strong>平安医疗科技疾病问答迁移学习比赛</strong></p>
+<p>本次评测任务的主要目标是针对中文的疾病问答数据，进行病种间的迁移学习。具体而言，给定来自5个不同病种的问句对，要求判定两个句子语义是否相同或者相近。所有语料来自互联网上患者真实的问题，并经过了筛选和人工的意图匹配标注。</p>
+<p><strong>示例</strong></p>
+<p>问句1：糖尿病吃什么？<br>
+问句2：糖尿病的食谱？<br>
+label:1<br>
+问句1：乙肝小三阳的危害？<br>
+问句2：乙肝大三阳的危害？<br>
+label:0</p>
+<p><strong>数据集：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">dataset\disease</th>
+<th style="text-align:center">diabetes</th>
+<th style="text-align:center">hypertension</th>
+<th style="text-align:center">hepatitis</th>
+<th style="text-align:center">aids</th>
+<th style="text-align:center">breast cancer</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">train</td>
+<td style="text-align:center">10000</td>
+<td style="text-align:center">25000</td>
+<td style="text-align:center">2500</td>
+<td style="text-align:center">2500</td>
+<td style="text-align:center">2500</td>
+<td>20000</td>
+</tr>
+<tr>
+<td style="text-align:center">dev</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">2000</td>
+<td style="text-align:center">2000</td>
+<td>10000</td>
+</tr>
+<tr>
+<td style="text-align:center">test</td>
+<td style="text-align:center">9965</td>
+<td style="text-align:center">9968</td>
+<td style="text-align:center">9996</td>
+<td style="text-align:center">10030</td>
+<td style="text-align:center">10041</td>
+<td>50000</td>
+</tr>
+</tbody>
+</table>
+<p>其中正负例均衡,且每一类疾病的正负例数目相等</p>
+<p><strong>数据样例：</strong></p>
+<p><img src="/2019/11/08/chip2019task2/image-20191109003759541.png" alt="数据样例"></p>
+<p><strong>类似比赛：</strong></p>
+<ul>
+<li>Kaggle Quora</li>
+<li>天池 CIKM</li>
+<li>蚂蚁金服</li>
+<li>第三届魔镜杯</li>
+<li>CCKS 2018 微众银行智能客服问句匹配大赛</li>
+<li>CHIP 2018 task2</li>
+</ul>
+<h1 id="数据预处理"><a class="markdownIt-Anchor" href="#数据预处理"></a> 数据预处理</h1>
+<p>原始数据存在以下特点：</p>
+<ul>
+<li>
+<p>数据为自然语言问句，并且标注了问题对是关于哪一种疾病，即两个问句一定是关于同种疾病的。</p>
+</li>
+<li>
+<p>原始数据中正负例比例均衡</p>
+</li>
+<li>
+<p>训练集和验证集的问题几乎没有交集</p>
+</li>
+<li>
+<p>原始数据存在标注错误</p>
+</li>
+</ul>
+<p>我们对原始语料进行了如下预处理：</p>
+<ul>
+<li>由于问句中存在一些敏感词的拼音缩写表达，特别是在艾滋病类别的问题中较多，所以我们人工浏览了大部分的数据，整理了这些拼音缩写表达的对应关系，还原到了自然语言词汇。</li>
+<li>高血压类问题中常出现“高血压145195”，我们对于这样的格式统一处理成了“高血压195，低血压145”。</li>
+<li>“尿蛋白中有x个加号/尿蛋白x+”这类表达，统一成了“尿蛋白高/偏高”。</li>
+<li>对于“空腹血糖+数字”和“餐后血糖+数字”，我们也统一处理成了高中低三种标准。</li>
+<li>对问句中的城市名统一去除。</li>
+<li>建立停用词表，对“请问一下”，“你好医生”这类的词进行了去除</li>
+<li>最后对问句中的标点符号进行了统一处理。</li>
+</ul>
+<h1 id="数据增强"><a class="markdownIt-Anchor" href="#数据增强"></a> 数据增强</h1>
+<p>目前常用的文本数据增强方法有:</p>
+<ul>
+<li>
+<p>同义词替换,去停用词。</p>
+</li>
+<li>
+<p>随机插入，随机删除</p>
+</li>
+<li>
+<p>随机打乱句子的顺序(对不注重语义信息的文本可能有用)。</p>
+</li>
+<li>
+<p>随机Mask掉原始文本中的某些词。</p>
+</li>
+<li>
+<p>回译-回翻译:指的是将目标语言翻译成另外一种语言再翻译回来的一种方法。</p>
+</li>
+</ul>
+<p>在最近阅读的<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1903.12136">《Distilling Task-Specific Knowledge from BERT into Simple Neural Networks》</a>一文中，作者为知识蒸馏做了数据增强，采用了下面三种方式：</p>
+<blockquote>
+<p>Masking。</p>
+<p>POS-guided word replacement。词性引导的词语替换。以一定的概率用相同词性的词替换句子中的某个词。新词的选择服从原始语料中各词性标签的分布。</p>
+<p>N-gram sampling。以一定的概率采样句子中的n个词，n从1-5中随机选出。这条规则相当于丢弃掉除此以外的其他词语，是一种更强势的masking形式。</p>
+</blockquote>
+<p>针对该问句相似度任务，还可以使用传递闭包扩充数据量，即：</p>
+<blockquote>
+<p>A与B相似，B与C相似，则可推出A与C相似。</p>
+<p>A与B相似，B与C不相似，则可推出A与C不相似。</p>
+</blockquote>
+<p>但由于我们认为训练集标注不准确，推出的相似关系可能会带来更大干扰，所以仅推出了传递闭包，没有实际应用。</p>
+<p>除此之外，我们还到医学问答网站的检索系统输入数据集中的问题，爬取了这几类疾病的相似问题，扩充数据量。</p>
+<h1 id="整体框架"><a class="markdownIt-Anchor" href="#整体框架"></a> 整体框架</h1>
+<p><img src="/2019/11/08/chip2019task2/image-20191109184234849.png" alt="整体框架图"></p>
+<h2 id="特征工程"><a class="markdownIt-Anchor" href="#特征工程"></a> 特征工程</h2>
+<p>这部分我们沿用了<a target="_blank" rel="noopener" href="https://github.com/ShuaichiLi/TextSimilarityZoo">去年岳师兄的工作</a>，包含特征如下：</p>
+<ul>
+<li>以下的token分别包含(char和word)</li>
+<li>common_token：句子对共享token的数目，句子对token的jaccard系数，句子对共享token idf 加权得分，句子对共享token占原句的比例</li>
+<li>embedding_dis：句子对token的wmd距离，句子对用向量表示后的各种距离</li>
+<li>expand_embeddings_distance：将给定的数据分别利用gensim word2vec 和 Glove 训练的词向量，特征同上</li>
+<li>fuzzy_wuzzy：句子对token的fuzzywuzzy</li>
+<li>long_common_string：最长公共子串</li>
+<li>powerful_token
+<ul>
+<li>重点区分词onehot 特征。</li>
+<li>比如某个token至少在20个句子对两边都出现，且为标签正确的比例&gt;=0.9， 认为其为高度相关词</li>
+<li>比如某个token至少在20个句子对中的一侧出现，且为标签错误的比例&gt;=0.9， 认为其为高度相关词</li>
+</ul>
+</li>
+<li>token_count：统计特征，句子token数目，句子去重token数，二者的比以及差值。</li>
+<li>句子对tfidf和one hot 向量化的相似度计算交互特征</li>
+<li>句子对向量化利用PCA降维的相似度计算交互特征</li>
+</ul>
+<p>另外我们还使用了数据集中的问题属于的疾病类别和问句的词性信息作为特征。</p>
+<h2 id="字词向量训练"><a class="markdownIt-Anchor" href="#字词向量训练"></a> 字词向量训练</h2>
+<p><strong>文本来源：</strong></p>
+<ul>
+<li>已有的生物医学文献摘要（实验室已有）</li>
+<li>医学问答网站的问题：39问医生、快速问医生、寻医问药网有问必答、春雨医生、飞华健康网等（岳师兄提供+自己整理，不需要爬新的了）</li>
+</ul>
+<p>使用的工具是gensim的word2vec和fasttext。</p>
+<p>另外还使用了罗师兄的使用生物医学文摘训练的ELMo向量。</p>
+<h2 id="预训练模型"><a class="markdownIt-Anchor" href="#预训练模型"></a> 预训练模型</h2>
+<p>目前存在很多公开的通用领域类的bert模型，我们使用了：</p>
+<ul>
+<li>bert/bert-large</li>
+<li>bert-wwm</li>
+<li>Roberta</li>
+<li>xlnet</li>
+<li>百度的ERNIE</li>
+</ul>
+<p>我们主要采用了两种方式使用bert：将bert编码的问句字or词向量作为特征；在领域限定的任务上微调。微调可以参考这篇论文，<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.05583?context=cs.CL">《How to Fine-Tune BERT for Text Classification?》</a>。它提出了三种方式，如下图所示：</p>
+<p><img src="/2019/11/08/chip2019task2/image-20191109185931840.png" alt="三种普遍微调bert的方式"></p>
+<blockquote>
+<p>黑线：直接使用单个目标任务微调bert</p>
+<p>蓝色虚线：使用目标领域的数据进一步预训练后，再使用单个目标任务微调bert</p>
+<p>红色虚线：使用目标领域的数据进一步预训练后，在多个任务上微调bert，再在单任务上微调</p>
+</blockquote>
+<h2 id="模型集成"><a class="markdownIt-Anchor" href="#模型集成"></a> 模型集成</h2>
+<p>多个模型的效果往往强于单个模型。模型集成的方法可以是简单的加权平均，投票，或者是复杂一些的stacking。</p>
+<p><img src="/2019/11/08/chip2019task2/111.png" alt="stacking的一层结构"></p>
+<p>每个模型对训练集做五折交叉验证（可以用sklearn的函数划分出五折的索引），每一折输出验证集的预测结果（softmax概率值）和测试集的预测结果。五个验证集的预测结果可还原为训练集，作为stacking第二层的训练集。测试集的预测结果直接取平均备用。stacking第二层可使用LR、LightGBM、XGBoost等简单分类器，再重复上述五折交叉验证的操作，得到新的训练集，再接一个简单分类器预测最终的结果。</p>
+<p>最终第二层选择LightGBM和XGBoost的实验效果较好。</p>
+<h1 id="实验"><a class="markdownIt-Anchor" href="#实验"></a> 实验</h1>
+<ul>
+<li>使用4.3中提到的预训练模型，调参，微调预测结果。</li>
+<li>用预训练模型的输出向量作为特征，结合字、词向量，ELMo向量进行实验。</li>
+<li>使用该任务和问句文本分类（五分类）任务进行多任务学习，模型集成后，效果没有提升。</li>
+<li>除bert类模型以外，还使用了ESIM模型实验，加入特征后有些许提高，但仍不能超过bert。</li>
+</ul>
+<p>最后，我对模型结果进行了后处理，但是由于数据特点，难以找出泛化性强的规则，所以处理之后反而效果有些下降。</p>
+<h1 id="写在最后"><a class="markdownIt-Anchor" href="#写在最后"></a> 写在最后</h1>
+<p>最后我们队伍的排名为A榜第7，B榜第12，结果不太理想。观察可见，前面队伍直到第二都是在86-87这个区间，只有第一拉开了较大差距，而且这个第一在任务三也是第一，真的强。等到时候评测论文出来，好好学习前面的方法，再总结到blog吧。这个名次也是和自己的努力和能力分不开的，还是要继续努力！</p>
+<p><img src="/2019/11/08/chip2019task2/222.png" alt="B榜排行"></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">lsc417</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://shuaichili.github.io/2019/11/08/chip2019task2/">http://shuaichili.github.io/2019/11/08/chip2019task2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://shuaichili.github.io" target="_blank">417's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AF%AD%E4%B9%89%E7%9B%B8%E4%BC%BC%E5%BA%A6/">语义相似度</a><a class="post-meta__tags" href="/tags/%E9%97%AE%E7%AD%94/">问答</a><a class="post-meta__tags" href="/tags/%E7%94%9F%E7%89%A9%E5%8C%BB%E5%AD%A6/">生物医学</a></div><div class="post_share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_facebook"></a><a class="a2a_button_twitter"></a><a class="a2a_button_wechat"></a><a class="a2a_button_sina_weibo"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://s1.ax1x.com/2020/09/09/w3y8G8.jpg" target="_blank"><img class="post-qr-code-img" src="https://s1.ax1x.com/2020/09/09/w3y8G8.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://s1.ax1x.com/2020/09/09/w3y3Pf.jpg" target="_blank"><img class="post-qr-code-img" src="https://s1.ax1x.com/2020/09/09/w3y3Pf.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/01/07/paper-reading1/"><img class="prev-cover" src="https://s1.ax1x.com/2020/04/01/G8r75D.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《BB-KBQA:BERT-Based Knowledge Base Question Answering》阅读笔记</div></div></a></div><div class="next-post pull-right"><a href="/2019/11/08/build-blog/"><img class="next-cover" src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1602646900405&amp;di=85ec3675a4de76648ea314fd26f9890a&amp;imgtype=0&amp;src=http%3A%2F%2Fimgedu.lagou.com%2F2024393-20200511143556231-530215527.png" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">如何使用GitHub和Hexo搭建自己的blog</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></article></main><footer id="footer" style="background-image: url(https://s1.ax1x.com/2020/04/01/G8rq8H.png)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By lsc417</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">逢えてよかった！</div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function loadValine () {
+  function initValine () {
+    window.valine = new Valine({
+      el: '#vcomment',
+      appId: 'ltJO5e9dJRSG3nSgBnnGJTkx-gzGzoHsz',
+      appKey: '5csIXIjJq9gaKxNJhR8TUqWc',
+      placeholder: '说点儿什么吧~',
+      avatar: 'robohash',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-cn',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+    });
+    if ('nick,mail') { valine.config.requiredFields= 'nick,mail'.split(',') }
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else $.getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.querySelector('#vcomment'),loadValine)
+  else setTimeout(() => loadValine(), 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="ribbon_piao" mobile="false" src="/js/third-party/piao.js"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "3e6a4488-4ad3-4ec2-9867-5d4edf9961c8";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (false) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script></div></body></html>
